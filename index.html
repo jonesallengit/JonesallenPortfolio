@@ -14,6 +14,7 @@
           scroll-behavior: smooth;
           -webkit-font-smoothing: antialiased;
           cursor: none; /* Hide default cursor */
+          background-color: #050505; /* Start dark to match creative theme or light for HR */
         }
         .font-heading { font-family: 'Outfit', sans-serif; }
         
@@ -90,6 +91,24 @@
         ::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
 
         a, button { cursor: none !important; }
+
+        /* Loading indicator to prevent blank screen while JS loads */
+        #root:empty::after {
+          content: "";
+          position: fixed;
+          top: 50%;
+          left: 50%;
+          width: 40px;
+          height: 40px;
+          margin: -20px 0 0 -20px;
+          border: 3px solid rgba(34, 178, 193, 0.2);
+          border-top-color: #22B2C1;
+          border-radius: 50%;
+          animation: spin 1s linear infinite;
+        }
+        @keyframes spin {
+          to { transform: rotate(360deg); }
+        }
     </style>
 <script type="importmap">
 {
@@ -104,5 +123,7 @@
 </head>
 <body class="mesh-gradient text-slate-900 overflow-x-hidden">
     <div id="root"></div>
+    <!-- Entry point script tag -->
+    <script type="module" src="index.tsx"></script>
 </body>
 </html>
